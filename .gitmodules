@@ -1,0 +1,3 @@
+[submodule "Lyra/Sources/CTagLib/taglib"]
+	path = Lyra/Sources/CTagLib/taglib
+	url = https://github.com/taglib/taglib.git
