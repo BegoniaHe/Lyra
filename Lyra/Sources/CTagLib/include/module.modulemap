@@ -1,0 +1,8 @@
+module CTagLib {
+    header "../taglib/taglib/tag.h"
+    header "../taglib/taglib/fileref.h"
+    header "../taglib/taglib/toolkit/tpropertymap.h"
+    header "../taglib/taglib/audioproperties.h"
+    header "../taglib/taglib/toolkit/tstring.h"
+    export *
+}
