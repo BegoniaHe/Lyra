@@ -1,5 +1,6 @@
 #import "SpecializedParserStep.h"
 
+#import "CAFMetadataReader.h"
 #import "EncodingDetector.h"
 #import "XiphOggMetadataReader.h"
 
@@ -12,6 +13,7 @@
     (void)hasTagLibFile;
     (void)fileRef;
     [EncodingDetector applyAIFFChunkFallbackForPath:path metadata:metadata];
+    [CAFMetadataReader applyPreferredCAFParsingForPath:path metadata:metadata];
     [XiphOggMetadataReader applyPreferredOggParsingForPath:path metadata:metadata];
 }
 

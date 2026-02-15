@@ -53,7 +53,8 @@ let project = Project(
                 .package(product: "_FoundationICU"),
                 .sdk(name: "z", type: .library),
                 .sdk(name: "AVFoundation", type: .framework),
-                .sdk(name: "CoreMedia", type: .framework)
+                .sdk(name: "CoreMedia", type: .framework),
+                .sdk(name: "AudioToolbox", type: .framework)
             ],
             settings: .settings(
                 base: [
