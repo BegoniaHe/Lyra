@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-foundation-icu",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-foundation-icu",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a92f6aecbfdf4de9b7e18f1b63bf471e5a63a9c5"
+      }
+    }
+  ],
+  "version" : 2
+}
