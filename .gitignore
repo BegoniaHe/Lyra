@@ -68,3 +68,10 @@ Derived/
 
 ### Tuist managed dependencies ###
 Tuist/.build
+
+## .build
+.build/
+
+## test audio files
+
+Lyra/Tests/TestAudio
