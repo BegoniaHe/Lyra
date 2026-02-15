@@ -75,3 +75,4 @@ Tuist/.build
 ## test audio files
 
 Lyra/Tests/TestAudio
+.vscode/
