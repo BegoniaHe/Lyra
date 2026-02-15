@@ -1,0 +1,210 @@
+{
+  "extractedMetadata" : [
+    {
+      "audio" : {
+        "bitrate" : 1411,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.aif",
+      "tags" : {
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉"
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 1411,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.aiff",
+      "tags" : {
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉"
+      }
+    },
+    {
+      "audio" : {
+        "channels" : 2,
+        "duration" : 252,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.caf",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "title" : "紅一葉"
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 1487,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.flac",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 128,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.mp3",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 1554,
+        "channels" : 2,
+        "duration" : 252,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.oga",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 138,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 48000
+      },
+      "fileName" : "紅一葉.opus",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 1549,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.tta",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 1411,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.wav",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 109,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 48000
+      },
+      "fileName" : "紅一葉.webm",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    },
+    {
+      "audio" : {
+        "bitrate" : 2005,
+        "channels" : 2,
+        "duration" : 251,
+        "sampleRate" : 44100
+      },
+      "fileName" : "紅一葉.wv",
+      "tags" : {
+        "album" : "君のいる景色",
+        "artist" : "霜月はるか",
+        "comment" : "163 key(Don't modify):L64FU3W4YxX3ZFTmbZ+8\/cS7N1GGvBPDmPnkQ74kbmeM7ueA7NVZc3QRMcytxRG5rZAqV3C5bOInfD72igTzzzmXXksu0p8+GHf4LdLFEx+S9E0NMlP8ph3sVQJJdTnT3WFqe\/H+9hUxGQr9TUkVspeam3St0CeTptdPq3d2jUQy1UWH\/Of6Z7GAWi9QLdOVVIev07anEXEfWWWMP1010YYPWN2+YOUNOnQCzjueQzbJZ1649jld7yIS65hktT+d4QsGqNACPaFL7Ygg9xwLpeo6KoA\/deQIKV0j0pTYPP+IMApNdzQ8Ww73ajVxh619uqpvrKJGWMyzaAfmBD+Ndck68snAonB0AVZduQL\/0uNHgvyIMcV0+RllFXQ75gYlUFNgUZrR5Auw4SRhzjhUUUQ\/YnoHLU97YkKGSaSAwtJrQ8MH4XGZ4hljTVnh7WmK3vZc\/d8rZmem51F8P0S8DGEyiQAyt9BMxC8OAdQJS3dySSHzXMsJIZ88zXzUPvze",
+        "title" : "紅一葉",
+        "track" : 1
+      }
+    }
+  ],
+  "failedFiles" : [
+
+  ],
+  "filePrefix" : "紅一葉",
+  "filesMissingAudioProperties" : [
+
+  ],
+  "filesMissingCoreTags" : [
+
+  ],
+  "folder" : "紅一葉",
+  "generatedAt" : "2026-02-15T06:12:30Z",
+  "metadataFieldCoverage" : {
+    "album" : 9,
+    "artist" : 9,
+    "bitrate" : 10,
+    "channels" : 11,
+    "comment" : 10,
+    "duration" : 11,
+    "genre" : 0,
+    "sampleRate" : 11,
+    "title" : 11,
+    "track" : 8,
+    "year" : 0
+  },
+  "successfulFiles" : [
+    "紅一葉.aif",
+    "紅一葉.aiff",
+    "紅一葉.caf",
+    "紅一葉.flac",
+    "紅一葉.mp3",
+    "紅一葉.oga",
+    "紅一葉.opus",
+    "紅一葉.tta",
+    "紅一葉.wav",
+    "紅一葉.webm",
+    "紅一葉.wv"
+  ],
+  "totalFiles" : 11
+}

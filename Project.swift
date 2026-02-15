@@ -41,7 +41,8 @@ let project = Project(
             product: .framework,
             bundleId: "dev.tuist.Lyra.Bridge",
             sources: [
-                "Lyra/Sources/LyraBridge/include/*.mm"
+                "Lyra/Sources/LyraBridge/include/*.mm",
+                "Lyra/Sources/Xiph/ogg/src/*.c"
             ],
             headers: .headers(
                 public: ["Lyra/Sources/LyraBridge/include/LyraBridge.h"],
@@ -63,6 +64,9 @@ let project = Project(
                     "HEADER_SEARCH_PATHS": [
                         "$(SRCROOT)/Lyra/Sources/LyraBridge/include",
                         "$(SRCROOT)/Lyra/Sources/LyraBridge",
+                        "$(SRCROOT)/Lyra/Sources/Xiph/ogg/include",
+                        "$(SRCROOT)/Lyra/Sources/Xiph/vorbis/include",
+                        "$(SRCROOT)/Lyra/Sources/Xiph/opusfile/include",
                         "$(SRCROOT)/Lyra/Sources/CTagLib/taglib/taglib",
                         "$(SRCROOT)/Lyra/Sources/CTagLib/taglib/taglib/toolkit"
                     ]

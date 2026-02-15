@@ -43,6 +43,38 @@ BOOL isOggFamilyFile(NSString *path) {
     return [ext isEqualToString:@"oga"] || [ext isEqualToString:@"ogg"];
 }
 
+void estimateOggBitrateIfNeeded(NSString *path,
+                                NSMutableDictionary<NSString *, id> *metadata) {
+    if (!isOggFamilyFile(path)) {
+        return;
+    }
+
+    NSNumber *duration = metadata[@"duration"];
+    if (![duration isKindOfClass:NSNumber.class] || duration.integerValue <= 0) {
+        return;
+    }
+
+    NSNumber *bitrate = metadata[@"bitrate"];
+    if ([bitrate isKindOfClass:NSNumber.class] && bitrate.integerValue > 0) {
+        return;
+    }
+
+    NSDictionary<NSFileAttributeKey, id> *attributes =
+        [NSFileManager.defaultManager attributesOfItemAtPath:path error:nil];
+    NSNumber *fileSize = attributes[NSFileSize];
+    if (![fileSize isKindOfClass:NSNumber.class] || fileSize.unsignedLongLongValue == 0) {
+        return;
+    }
+
+    long double estimated = ((long double)fileSize.unsignedLongLongValue * 8.0L) /
+        (long double)duration.integerValue / 1000.0L;
+    if (!isfinite((double)estimated) || estimated <= 0.0L) {
+        return;
+    }
+
+    metadata[@"bitrate"] = @((NSInteger)llround((double)estimated));
+}
+
 void logOggAudioFallbackIfNeeded(NSString *path,
                                  NSDictionary<NSString *, id> *metadata,
                                  AVAsset *asset,
@@ -183,6 +215,8 @@ void fillFromAVMetadataItem(NSMutableDictionary *metadata, AVMetadataItem *item)
             break;
         }
     }
+
+    estimateOggBitrateIfNeeded(path, metadata);
 
     logOggAudioFallbackIfNeeded(path, metadata, asset, durationLoadError, tracksLoadError);
 }
