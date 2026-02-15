@@ -1,3 +1,6 @@
+// Tuist.swift
 import ProjectDescription
 
-let tuist = Tuist(fullHandle: "BegoniaHe/Lyra", project: .tuist())
+let tuist = Tuist(
+    fullHandle: "BegoniaHe/Lyra"
+)
