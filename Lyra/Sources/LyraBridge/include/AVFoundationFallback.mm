@@ -1,8 +1,69 @@
 #import "AVFoundationFallback.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
+#import <Foundation/Foundation.h>
 
 namespace {
+
+AVURLAsset *assetForPath(NSString *path) {
+    NSDictionary<NSString *, id> *options = @{
+        AVURLAssetPreferPreciseDurationAndTimingKey: @YES
+    };
+    NSURL *url = [NSURL fileURLWithPath:path];
+    return [AVURLAsset URLAssetWithURL:url options:options];
+}
+
+BOOL loadAssetKeysSynchronously(AVAsset *asset,
+                                NSArray<NSString *> *keys,
+                                NSError **error) {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    [asset loadValuesAsynchronouslyForKeys:keys completionHandler:^{
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    for (NSString *key in keys) {
+        NSError *keyError = nil;
+        AVKeyValueStatus status = [asset statusOfValueForKey:key error:&keyError];
+        if (status != AVKeyValueStatusLoaded) {
+            if (error) {
+                *error = keyError;
+            }
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
+BOOL isOggFamilyFile(NSString *path) {
+    NSString *ext = path.pathExtension.lowercaseString;
+    return [ext isEqualToString:@"oga"] || [ext isEqualToString:@"ogg"];
+}
+
+void logOggAudioFallbackIfNeeded(NSString *path,
+                                 NSDictionary<NSString *, id> *metadata,
+                                 AVAsset *asset,
+                                 NSError *durationError,
+                                 NSError *tracksError) {
+    if (!isOggFamilyFile(path)) {
+        return;
+    }
+
+    if (metadata[@"duration"] && metadata[@"bitrate"]) {
+        return;
+    }
+
+    const BOOL preciseTiming = asset.providesPreciseDurationAndTiming;
+    NSString *durationText = metadata[@"duration"] ? [metadata[@"duration"] description] : @"nil";
+    NSString *bitrateText = metadata[@"bitrate"] ? [metadata[@"bitrate"] description] : @"nil";
+    NSString *durationErrorText = durationError.localizedDescription ?: @"none";
+    NSString *tracksErrorText = tracksError.localizedDescription ?: @"none";
+
+    NSLog(@"[Lyra][AVFallback] OGG diagnostics for %@ -> duration=%@ bitrate=%@ preciseTiming=%@ durationError=%@ tracksError=%@", path.lastPathComponent, durationText, bitrateText, preciseTiming ? @"YES" : @"NO", durationErrorText, tracksErrorText);
+}
 
 NSString *normalizedMetadataKey(AVMetadataItem *item) {
     if (item.commonKey.length > 0) {
@@ -50,8 +111,7 @@ void fillFromAVMetadataItem(NSMutableDictionary *metadata, AVMetadataItem *item)
 
 + (void)applyMetadataFallbackForPath:(NSString *)path
                             metadata:(NSMutableDictionary<NSString *, id> *)metadata {
-    NSURL *url = [NSURL fileURLWithPath:path];
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
+    AVURLAsset *asset = assetForPath(path);
 
     for (AVMetadataItem *item in asset.commonMetadata) {
         fillFromAVMetadataItem(metadata, item);
@@ -67,18 +127,29 @@ void fillFromAVMetadataItem(NSMutableDictionary *metadata, AVMetadataItem *item)
 
 + (void)applyAudioPropertiesFallbackForPath:(NSString *)path
                                    metadata:(NSMutableDictionary<NSString *, id> *)metadata {
-    NSURL *url = [NSURL fileURLWithPath:path];
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
+    AVURLAsset *asset = assetForPath(path);
 
-    if (!metadata[@"duration"]) {
+    NSError *durationLoadError = nil;
+    const BOOL durationReady = loadAssetKeysSynchronously(asset, @[@"duration"], &durationLoadError);
+
+    if (!metadata[@"duration"] && durationReady) {
         const Float64 seconds = CMTimeGetSeconds(asset.duration);
         if (isfinite(seconds) && seconds > 0) {
             metadata[@"duration"] = @((NSInteger)llround(seconds));
         }
     }
 
+    NSError *tracksLoadError = nil;
+    const BOOL tracksReady = loadAssetKeysSynchronously(asset, @[@"tracks"], &tracksLoadError);
+
+    if (!tracksReady) {
+        logOggAudioFallbackIfNeeded(path, metadata, asset, durationLoadError, tracksLoadError);
+        return;
+    }
+
     AVAssetTrack *audioTrack = [[asset tracksWithMediaType:AVMediaTypeAudio] firstObject];
     if (!audioTrack) {
+        logOggAudioFallbackIfNeeded(path, metadata, asset, durationLoadError, tracksLoadError);
         return;
     }
 
@@ -112,6 +183,8 @@ void fillFromAVMetadataItem(NSMutableDictionary *metadata, AVMetadataItem *item)
             break;
         }
     }
+
+    logOggAudioFallbackIfNeeded(path, metadata, asset, durationLoadError, tracksLoadError);
 }
 
 @end

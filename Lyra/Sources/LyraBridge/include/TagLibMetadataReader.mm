@@ -112,10 +112,26 @@ void populateAudioProperties(NSMutableDictionary<NSString *, id> *metadata,
     }
 
     TagLib::AudioProperties *props = file.audioProperties();
-    metadata[@"duration"] = @(props->lengthInSeconds());
-    metadata[@"bitrate"] = @(props->bitrate());
-    metadata[@"sampleRate"] = @(props->sampleRate());
-    metadata[@"channels"] = @(props->channels());
+
+    const int duration = props->lengthInSeconds();
+    if (duration > 0) {
+        metadata[@"duration"] = @(duration);
+    }
+
+    const int bitrate = props->bitrate();
+    if (bitrate > 0) {
+        metadata[@"bitrate"] = @(bitrate);
+    }
+
+    const int sampleRate = props->sampleRate();
+    if (sampleRate > 0) {
+        metadata[@"sampleRate"] = @(sampleRate);
+    }
+
+    const int channels = props->channels();
+    if (channels > 0) {
+        metadata[@"channels"] = @(channels);
+    }
 }
 
 } // namespace TagLibMetadataReader

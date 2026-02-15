@@ -2,6 +2,12 @@ import ProjectDescription
 
 let project = Project(
     name: "Lyra",
+    packages: [
+        .remote(
+            url: "https://github.com/swiftlang/swift-foundation-icu",
+            requirement: .branch("main")
+        )
+    ],
     targets: [
         .target(
             name: "CTagLib",
@@ -35,20 +41,28 @@ let project = Project(
             product: .framework,
             bundleId: "dev.tuist.Lyra.Bridge",
             sources: [
-                "Lyra/Sources/LyraBridge/include/LyraBridge.mm"
+                "Lyra/Sources/LyraBridge/include/*.mm"
             ],
             headers: .headers(
-                public: ["Lyra/Sources/LyraBridge/include/LyraBridge.h"]
+                public: ["Lyra/Sources/LyraBridge/include/LyraBridge.h"],
+                private: [
+                    "Lyra/Sources/LyraBridge/include/*.h",
+                    "Lyra/Sources/LyraBridge/*.h"
+                ]
             ),
             dependencies: [
                 .target(name: "CTagLib"),
+                .package(product: "_FoundationICU"),
                 .sdk(name: "z", type: .library),
-                .sdk(name: "AVFoundation", type: .framework)
+                .sdk(name: "AVFoundation", type: .framework),
+                .sdk(name: "CoreMedia", type: .framework)
             ],
             settings: .settings(
                 base: [
                     "CLANG_CXX_LANGUAGE_STANDARD": "c++17",
                     "HEADER_SEARCH_PATHS": [
+                        "$(SRCROOT)/Lyra/Sources/LyraBridge/include",
+                        "$(SRCROOT)/Lyra/Sources/LyraBridge",
                         "$(SRCROOT)/Lyra/Sources/CTagLib/taglib/taglib",
                         "$(SRCROOT)/Lyra/Sources/CTagLib/taglib/taglib/toolkit"
                     ]
@@ -74,6 +88,9 @@ let project = Project(
             bundleId: "dev.tuist.LyraTests",
             sources: [
                 "Lyra/Tests/**/*.swift"
+            ],
+            resources: [
+                "Lyra/Tests/TestAudio/**"
             ],
             dependencies: [.target(name: "Lyra")]
         ),
