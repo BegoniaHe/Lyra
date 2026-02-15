@@ -5,20 +5,28 @@ import Foundation
 struct LyraTests {
 
     @Test func extractMetadataFromAllHongYiYeFixtures() throws {
+        try runFixtureBatchTest(folder: "紅一葉", filePrefix: "紅一葉")
+    }
+
+    @Test func extractMetadataFromAll7YearsFixtures() throws {
+        try runFixtureBatchTest(folder: "7Years", filePrefix: "Conor_Maynard_-_7_Years")
+    }
+
+    private func runFixtureBatchTest(folder: String, filePrefix: String) throws {
         guard let testAudioRoot = Bundle.module.url(forResource: "TestAudio", withExtension: nil) else {
             Issue.record("TestAudio resource directory is missing")
             return
         }
 
         let testFileDirectory = testAudioRoot
-            .appendingPathComponent("紅一葉", isDirectory: true)
+            .appendingPathComponent(folder, isDirectory: true)
 
         let allFiles = try FileManager.default.contentsOfDirectory(
             at: testFileDirectory,
             includingPropertiesForKeys: nil,
             options: [.skipsHiddenFiles]
         )
-        .filter { $0.lastPathComponent.hasPrefix("紅一葉.") }
+        .filter { $0.lastPathComponent.hasPrefix("\(filePrefix).") }
         .sorted { $0.lastPathComponent < $1.lastPathComponent }
 
         #expect(!allFiles.isEmpty)
@@ -56,7 +64,7 @@ struct LyraTests {
         }
 
         #expect(!successfulFiles.isEmpty)
-        print("\n=== Lyra metadata extraction summary ===")
+        print("\n=== Lyra metadata extraction summary (\(folder)) ===")
         print("Success: \(successfulFiles.count), Failed: \(failedFiles.count)")
 
         print("\n=== Detailed summary ===")
