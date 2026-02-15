@@ -76,3 +76,4 @@ Tuist/.build
 
 Lyra/Tests/TestAudio
 .vscode/
+Lyra/Tests/*.json

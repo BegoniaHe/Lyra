@@ -1,6 +1,4 @@
 #import <Foundation/Foundation.h>
-#import "EncodingDetector.h"
-#import "AVFoundationFallback.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

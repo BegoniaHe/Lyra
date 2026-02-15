@@ -46,10 +46,7 @@ let project = Project(
             ],
             headers: .headers(
                 public: ["Lyra/Sources/LyraBridge/include/LyraBridge.h"],
-                private: [
-                    "Lyra/Sources/LyraBridge/include/*.h",
-                    "Lyra/Sources/LyraBridge/*.h"
-                ]
+                private: []
             ),
             dependencies: [
                 .target(name: "CTagLib"),
