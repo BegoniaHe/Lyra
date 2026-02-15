@@ -6,12 +6,12 @@
 
 - (void)applyToMetadata:(NSMutableDictionary<NSString *, id> *)metadata
                    path:(NSString *)path
-           hasTagLibFile:(bool)hasTagLibFile
+          hasTagLibFile:(bool)hasTagLibFile
                 fileRef:(TagLib::FileRef *)fileRef {
-    (void)path;
-    (void)hasTagLibFile;
-    (void)fileRef;
-    (void)LYRSanitizeInvalidMetadataValues(metadata);
+  (void)path;
+  (void)hasTagLibFile;
+  (void)fileRef;
+  (void)LYRSanitizeInvalidMetadataValues(metadata);
 }
 
 @end
