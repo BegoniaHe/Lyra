@@ -2,8 +2,62 @@
 #import "EncodingDetector.h"
 #import "MetadataPipeline.h"
 #include <fileref.h>
+#include <tag.h>
+#include <toolkit/tfile.h>
+#include <toolkit/tpropertymap.h>
 
 namespace {
+
+bool isNonEmptyString(id value) {
+    return [value isKindOfClass:NSString.class] && [((NSString *)value) length] > 0;
+}
+
+TagLib::String toTagString(NSString *value) {
+    return TagLib::String(value.UTF8String, TagLib::String::UTF8);
+}
+
+void setPropertyIfPresent(TagLib::PropertyMap &properties,
+                          NSDictionary<NSString *, id> *metadata,
+                          NSString *jsonKey,
+                          const char *tagKey) {
+    id value = metadata[jsonKey];
+    if (!isNonEmptyString(value)) {
+        return;
+    }
+
+    properties.replace(tagKey, TagLib::StringList(toTagString((NSString *)value)));
+}
+
+void setNumericPropertyIfPresent(TagLib::PropertyMap &properties,
+                                 NSDictionary<NSString *, id> *metadata,
+                                 NSString *jsonKey,
+                                 const char *tagKey) {
+    id value = metadata[jsonKey];
+    if (![value isKindOfClass:NSNumber.class]) {
+        return;
+    }
+
+    NSInteger number = [(NSNumber *)value integerValue];
+    if (number <= 0) {
+        return;
+    }
+
+    NSString *stringValue = [NSString stringWithFormat:@"%ld", (long)number];
+    properties.replace(tagKey, TagLib::StringList(toTagString(stringValue)));
+}
+
+void setBoolPropertyIfPresent(TagLib::PropertyMap &properties,
+                              NSDictionary<NSString *, id> *metadata,
+                              NSString *jsonKey,
+                              const char *tagKey) {
+    id value = metadata[jsonKey];
+    if (![value isKindOfClass:NSNumber.class]) {
+        return;
+    }
+
+    NSString *stringValue = [((NSNumber *)value) boolValue] ? @"1" : @"0";
+    properties.replace(tagKey, TagLib::StringList(toTagString(stringValue)));
+}
 
 }
 
@@ -65,6 +119,49 @@ namespace {
     }
     if (metadata[@"track"]) {
         tag->setTrack([metadata[@"track"] unsignedIntValue]);
+    }
+
+    TagLib::File *nativeFile = file.file();
+    if (nativeFile) {
+        TagLib::PropertyMap properties = nativeFile->properties();
+
+        setPropertyIfPresent(properties, metadata, @"albumArtist", "ALBUMARTIST");
+        setPropertyIfPresent(properties, metadata, @"composer", "COMPOSER");
+        setPropertyIfPresent(properties, metadata, @"sortTitle", "TITLESORT");
+        setPropertyIfPresent(properties, metadata, @"sortArtist", "ARTISTSORT");
+        setPropertyIfPresent(properties, metadata, @"sortAlbum", "ALBUMSORT");
+        setPropertyIfPresent(properties, metadata, @"sortAlbumArtist", "ALBUMARTISTSORT");
+        setPropertyIfPresent(properties, metadata, @"sortComposer", "COMPOSERSORT");
+
+        setNumericPropertyIfPresent(properties, metadata, @"trackNumber", "TRACKNUMBER");
+        setNumericPropertyIfPresent(properties, metadata, @"totalTracks", "TRACKTOTAL");
+        setNumericPropertyIfPresent(properties, metadata, @"discNumber", "DISCNUMBER");
+        setNumericPropertyIfPresent(properties, metadata, @"totalDiscs", "DISCTOTAL");
+        setNumericPropertyIfPresent(properties, metadata, @"bpm", "BPM");
+
+        setPropertyIfPresent(properties, metadata, @"releaseDate", "RELEASEDATE");
+        setPropertyIfPresent(properties, metadata, @"originalReleaseDate", "ORIGINALDATE");
+        setPropertyIfPresent(properties, metadata, @"lyrics", "LYRICS");
+        setPropertyIfPresent(properties, metadata, @"isrc", "ISRC");
+        setPropertyIfPresent(properties, metadata, @"label", "LABEL");
+        setPropertyIfPresent(properties, metadata, @"encodedBy", "ENCODEDBY");
+        setPropertyIfPresent(properties, metadata, @"encoderSettings", "ENCODERSETTINGS");
+        setPropertyIfPresent(properties, metadata, @"copyright", "COPYRIGHT");
+        setPropertyIfPresent(properties, metadata, @"musicBrainzArtistId", "MUSICBRAINZ_ARTISTID");
+        setPropertyIfPresent(properties, metadata, @"musicBrainzAlbumId", "MUSICBRAINZ_ALBUMID");
+        setPropertyIfPresent(properties, metadata, @"musicBrainzTrackId", "MUSICBRAINZ_TRACKID");
+        setPropertyIfPresent(properties, metadata, @"musicBrainzReleaseGroupId", "MUSICBRAINZ_RELEASEGROUPID");
+        setPropertyIfPresent(properties, metadata, @"replayGainTrack", "REPLAYGAIN_TRACK_GAIN");
+        setPropertyIfPresent(properties, metadata, @"replayGainAlbum", "REPLAYGAIN_ALBUM_GAIN");
+        setPropertyIfPresent(properties, metadata, @"subtitle", "SUBTITLE");
+        setPropertyIfPresent(properties, metadata, @"grouping", "GROUPING");
+        setPropertyIfPresent(properties, metadata, @"movement", "MOVEMENT");
+        setPropertyIfPresent(properties, metadata, @"mood", "MOOD");
+        setPropertyIfPresent(properties, metadata, @"language", "LANGUAGE");
+        setPropertyIfPresent(properties, metadata, @"key", "INITIALKEY");
+        setBoolPropertyIfPresent(properties, metadata, @"compilation", "COMPILATION");
+
+        nativeFile->setProperties(properties);
     }
     
     return file.save();

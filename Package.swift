@@ -231,7 +231,16 @@ let package = Package(
             publicHeadersPath: "include",
             cxxSettings: [
                 .headerSearchPath("../CTagLib/taglib/taglib"),
-                .headerSearchPath("../CTagLib/taglib/taglib/toolkit")
+                .headerSearchPath("../CTagLib/taglib/taglib/toolkit"),
+                .headerSearchPath("../CTagLib/taglib/taglib/mpeg"),
+                .headerSearchPath("../CTagLib/taglib/taglib/mpeg/id3v2"),
+                .headerSearchPath("../CTagLib/taglib/taglib/mpeg/id3v2/frames"),
+                .headerSearchPath("../CTagLib/taglib/taglib/mp4"),
+                .headerSearchPath("../CTagLib/taglib/taglib/flac"),
+                .headerSearchPath("../CTagLib/taglib/taglib/riff"),
+                .headerSearchPath("../CTagLib/taglib/taglib/riff/wav"),
+                .headerSearchPath("../CTagLib/taglib/taglib/riff/aiff"),
+                .headerSearchPath("../CTagLib/taglib/taglib/trueaudio")
             ],
             linkerSettings: [
                 .linkedFramework("AVFoundation"),
@@ -253,9 +262,6 @@ let package = Package(
             name: "LyraTests",
             dependencies: ["Lyra"],
             path: "Lyra/Tests",
-            resources: [
-                .copy("TestAudio")
-            ],
             swiftSettings: [
                 .interoperabilityMode(.Cxx)
             ]

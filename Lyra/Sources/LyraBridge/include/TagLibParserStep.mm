@@ -14,6 +14,7 @@
     }
 
     TagLibMetadataReader::populateTagMetadata(metadata, path, *fileRef, hasTagLibFile);
+    TagLibMetadataReader::populateExtendedMetadata(metadata, path, *fileRef, hasTagLibFile);
     if (!LYRIsOggFamilyPath(path)) {
         TagLibMetadataReader::populateAudioProperties(metadata, *fileRef, hasTagLibFile);
     }

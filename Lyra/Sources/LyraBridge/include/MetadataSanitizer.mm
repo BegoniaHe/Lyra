@@ -3,11 +3,22 @@
 namespace {
 
 NSArray<NSString *> *stringMetadataFields() {
-    return @[@"title", @"artist", @"album", @"comment", @"genre"];
+    return @[
+        @"title", @"artist", @"album", @"albumArtist", @"composer",
+        @"comment", @"genre", @"releaseDate", @"originalReleaseDate",
+        @"lyrics", @"sortTitle", @"sortArtist", @"sortAlbum", @"sortAlbumArtist", @"sortComposer",
+        @"codec", @"artworkMimeType", @"isrc", @"label", @"encodedBy", @"encoderSettings", @"copyright",
+        @"musicBrainzArtistId", @"musicBrainzAlbumId", @"musicBrainzTrackId", @"musicBrainzReleaseGroupId",
+        @"replayGainTrack", @"replayGainAlbum", @"subtitle", @"grouping", @"movement", @"mood", @"language", @"key"
+    ];
 }
 
 NSArray<NSString *> *numericMetadataFields() {
-    return @[@"year", @"track", @"duration", @"bitrate", @"sampleRate", @"channels"];
+    return @[@"year", @"track", @"trackNumber", @"totalTracks", @"discNumber", @"totalDiscs", @"bpm", @"duration", @"bitrate", @"sampleRate", @"channels", @"bitDepth"];
+}
+
+NSArray<NSString *> *booleanMetadataFields() {
+    return @[@"compilation"];
 }
 
 NSString *trimmedNonEmptyString(id value) {
@@ -26,6 +37,28 @@ NSInteger validatedPositiveInteger(id value) {
 
     NSInteger integerValue = [(NSNumber *)value integerValue];
     return integerValue > 0 ? integerValue : 0;
+}
+
+NSNumber *validatedBoolean(id value) {
+    if ([value isKindOfClass:NSNumber.class]) {
+        return @([(NSNumber *)value boolValue]);
+    }
+
+    if ([value isKindOfClass:NSString.class]) {
+        NSString *normalized = [((NSString *)value) lowercaseString];
+        if ([normalized isEqualToString:@"true"] ||
+            [normalized isEqualToString:@"yes"] ||
+            [normalized isEqualToString:@"1"]) {
+            return @YES;
+        }
+        if ([normalized isEqualToString:@"false"] ||
+            [normalized isEqualToString:@"no"] ||
+            [normalized isEqualToString:@"0"]) {
+            return @NO;
+        }
+    }
+
+    return nil;
 }
 
 } // namespace
@@ -71,6 +104,24 @@ bool LYRSanitizeInvalidMetadataValues(NSMutableDictionary<NSString *, id> *metad
 
         if ([rawValue integerValue] != sanitizedValue) {
             metadata[field] = @(sanitizedValue);
+        }
+    }
+
+    for (NSString *field in booleanMetadataFields()) {
+        id rawValue = metadata[field];
+        if (!rawValue) {
+            continue;
+        }
+
+        NSNumber *sanitizedValue = validatedBoolean(rawValue);
+        if (!sanitizedValue) {
+            [metadata removeObjectForKey:field];
+            hadInvalidValue = true;
+            continue;
+        }
+
+        if (![rawValue isEqual:sanitizedValue]) {
+            metadata[field] = sanitizedValue;
         }
     }
 

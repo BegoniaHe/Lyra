@@ -14,5 +14,10 @@ void populateAudioProperties(NSMutableDictionary<NSString *, id> *metadata,
                              TagLib::FileRef &file,
                              bool hasTagLibFile);
 
+void populateExtendedMetadata(NSMutableDictionary<NSString *, id> *metadata,
+                              NSString *path,
+                              TagLib::FileRef &file,
+                              bool hasTagLibFile);
+
 } // namespace TagLibMetadataReader
 #endif
